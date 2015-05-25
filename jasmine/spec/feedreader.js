@@ -87,10 +87,9 @@ $(function() {
             });
         });
         // there will be at least one entry
-        it('feed container has at least a single entry',
-            function() {
-                expect($('.entry').length).toBeGreaterThan(0);
-            });
+        it('feed container has at least a single entry', function() {
+            expect($('.entry').length).toBeGreaterThan(0);
+        });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe("New Feed Selection", function() {
