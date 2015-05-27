@@ -30,10 +30,10 @@ $(function() {
          */
         it('URL is defined', function() {
             //loop through elements to check URL
-            for (var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].url).toBeDefined();
-                expect(allFeeds.length).not.toBe(0);
-            }
+            allFeeds.forEach(function(feed) {
+                expect(feed.url).toBeDefined();
+                expect(feed.url.length).not.toBe(0);
+            });
         });
         /* Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
@@ -82,16 +82,16 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+                loadFeed(0, done);
         });
         // there will be at least one entry
-        it('feed container has at least a single entry', function() {
+        it('feed container has at least a single entry', function(done) {
             expect($('.entry').length).toBeGreaterThan(0);
+            done();
         });
     });
-    /* TODO: Write a new test suite named "New Feed Selection" */
+
+    /* Write a new test suite named "New Feed Selection" */
     describe("New Feed Selection", function() {
         /* Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
@@ -104,8 +104,9 @@ $(function() {
                 loadFeed(1, done);
             });
         });
-        it('loads and updates page with new entries', function() {
+        it('loads and updates page with new entries', function(done) {
             expect($('.feed').html()).not.toBe(previousContent);
+            done();
       });
     });
 }());
